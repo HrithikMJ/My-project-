@@ -1,8 +1,4 @@
 import PySimpleGUI as Sg
-Sg.theme("BrightColors")
-font_name = ' Verdana  '
-font_size = 20
-
 def add_task(value):
     task = value['task_name']
     if task != "":
@@ -16,8 +12,6 @@ def add_task(value):
     window.FindElement('task_name').Update(value="")
     window.FindElement('to_do_work').Update(values=to_do_work)
     window.FindElement('add_save').Update('Add')
-
-
 def edit_tasks(value):
     try:
         edit_val = value['to_do_work'][0]
@@ -32,7 +26,7 @@ def clear_tasks(value):
     try:
         clear_val = value['to_do_work'][0]
         todowork.remove(clear_val)
-        window.FindElement('task_name').Update(values=clear_val)
+        window.FindElement('to_do_work').Update(values=to_do_work)
     except:
         pass
 
@@ -43,7 +37,9 @@ def clear_all():
         window.FindElement("to_do_work").Update(values=to_do_work)
     except:
         pass
-
+Sg.theme("BrightColors")
+font_name = ' Verdana  '
+font_size = 20
 layout = [
     [
         Sg.Text("Enter the work in the below box", font=(font_name, font_size))],
